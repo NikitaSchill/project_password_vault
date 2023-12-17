@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Xpconfig37
+    ports:
+      - "3307:3306"
+    volumes:
+      - my-db:/var/lib/mysql
+
+  cli:
+    build: .
+    depends_on:
+      - db
+
+volumes:
+  my-db:
